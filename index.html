@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aninda Roy Dhruba - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #0f172a;
+            --text: #334155;
+            --light: #f8fafc;
+            --gray: #64748b;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            animation: fadeInUp 0.8s 0.2s backwards;
+        }
+
+        .hero .contact-info {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s 0.4s backwards;
+        }
+
+        .hero .contact-info a {
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .hero .contact-info a:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 2rem;
+        }
+
+        section:nth-child(even) {
+            background: var(--light);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Education & Experience Cards */
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card .meta {
+            color: var(--gray);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .card ul {
+            margin-left: 1.5rem;
+        }
+
+        .card li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .skill-category h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .skill-category li:last-child {
+            border-bottom: none;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .project-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .project-card p {
+            margin-bottom: 1rem;
+            color: var(--gray);
+        }
+
+        .project-card .tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-card .tech span {
+            background: var(--light);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--primary);
+        }
+
+        .project-card a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .project-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* Research Interests */
+        .interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .interest-tag {
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-size: 1rem;
+        }
+
+        /* Achievements */
+        .achievements-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .achievement {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--primary);
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .achievement h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">ARD</div>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Aninda Roy Dhruba</h1>
+        <p class="subtitle">Lecturer | Researcher | Software Engineer</p>
+        <div class="contact-info">
+            <a href="mailto:anindaroydhruv@gmail.com">📧 anindaroydhruv@gmail.com</a>
+            <a href="tel:+8801646517113">📱 +880 1646-517113</a>
+            <a href="https://github.com/D-R0Y" target="_blank">💻 GitHub</a>
+            <span>📍 Chittagong, Bangladesh</span>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p>Recent Computer Science and Engineering graduate from Chittagong University of Engineering and Technology, currently serving as a Lecturer at Northern University Bangladesh. I am passionate about teaching core computer science courses and advancing research in Natural Language Processing, Machine Learning applications, and Reinforcement Learning.</p>
+                <p style="margin-top: 1rem;">My research focuses on hierarchical disease classification systems and addressing bias in NLP systems, with the goal of developing fair and ethical AI solutions. I combine academic excellence with practical experience to bridge the gap between theoretical knowledge and real-world applications.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <h2>Education</h2>
+            
+            <div class="card">
+                <h3>Bachelor of Science in Computer Science and Engineering</h3>
+                <div class="meta">Chittagong University of Engineering and Technology (CUET) | Graduated: August 2025</div>
+                <p><strong>CGPA: 3.89 / 4.00</strong> | Dean's List Honoree (CGPA ≥ 3.75)</p>
+                <p><strong>Relevant Coursework:</strong> Structured Programming, OOP, Database Systems, Compiler Design, Microprocessor & Interfacing, Data Structures & Algorithms, Computer Networks, Software Engineering, Machine Learning, Big Data Analytics, High Performance Computing, Digital Signal Processing</p>
+            </div>
+
+            <div class="card">
+                <h3>Higher Secondary Certificate (HSC)</h3>
+                <div class="meta">Sonar Bangla College, Cumilla | June 2019</div>
+                <p><strong>GPA: 5.00 / 5.00</strong></p>
+            </div>
+
+            <div class="card">
+                <h3>Secondary School Certificate (SSC)</h3>
+                <div class="meta">Barura Haji Nowab Ali Pilot High School, Cumilla | April 2017</div>
+                <p><strong>GPA: 5.00 / 5.00</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2>Professional Experience</h2>
+            
+            <div class="card">
+                <h3>Lecturer</h3>
+                <div class="meta">Department of Computer Science and Engineering, Northern University Bangladesh | August 2025 – Present</div>
+                <ul>
+                    <li>Delivering lectures and conducting laboratory sessions for Data Structures, Object-Oriented Programming with Java, Computer Networks, Microprocessor and Assembly Language Programming, and System Analysis and Design</li>
+                    <li>Designing course materials, assignments, and examinations aligned with curriculum objectives</li>
+                    <li>Mentoring students in academic projects and research initiatives</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Industrial Attachment</h3>
+                <div class="meta">RedDot Digital Limited, Dhaka | December 2024 - January 2025</div>
+                <ul>
+                    <li>Gained practical exposure to Software Development Life Cycle (SDLC) methodologies and industry best practices</li>
+                    <li>Observed project management workflows, quality assurance processes, and deployment strategies</li>
+                    <li>Collaborated with development teams on real-world software engineering projects</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research">
+        <div class="container">
+            <h2>Research Experience</h2>
+            
+            <div class="card">
+                <h3>Graduate Researcher</h3>
+                <div class="meta">Undergraduate Thesis: Hierarchical Symptom-Based Disease Classification | June 2024 – July 2025</div>
+                <p><strong>Supervisor:</strong> Dr. Muhammad Ibrahim Khan, Professor, Department of CSE, CUET</p>
+                <ul>
+                    <li>Developed comprehensive patient conversation dataset encompassing 16 diseases across 4 medical specializations</li>
+                    <li>Implemented hierarchical classification system with custom loss function generation</li>
+                    <li>Fine-tuned domain-specific transformer models for medical dialogue understanding</li>
+                    <li><strong>Status:</strong> Manuscript submitted to ICCIT Conference (under review)</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Research Associate</h3>
+                <div class="meta">Project: Bias Detection and Mitigation in NLP | Learnify Research Lab | May 2025 – Present</div>
+                <ul>
+                    <li>Conducting comprehensive investigation of 17 distinct types of biases in NLP systems</li>
+                    <li>Developing comparative survey analyzing state-of-the-art detection and mitigation techniques</li>
+                    <li>Contributing to advancement of fairness and ethical considerations in language models</li>
+                    <li><strong>Status:</strong> Manuscript submitted to Elsevier's Array Journal (under review)</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Research Collaborator</h3>
+                <div class="meta">Project: Electric Load Forecasting Using Time Series Analysis | March 2025 – June 2025</div>
+                <p><strong>Supervisor:</strong> Md. Kamrul Hasan, Department of CSE, CUET</p>
+                <ul>
+                    <li>Web-scraped and preprocessed electrical load data from PGCB spanning 2016 to June 2025</li>
+                    <li>Evaluated multiple forecasting methodologies to identify optimal prediction approaches</li>
+                    <li>Achieved Mean Absolute Percentage Error (MAPE) of 1.09% using proposed forecasting model</li>
+                </ul>
+            </div>
+
+            <h2 style="margin-top: 3rem;">Research Interests</h2>
+            <div class="interests">
+                <span class="interest-tag">Natural Language Processing</span>
+                <span class="interest-tag">Machine Learning Applications</span>
+                <span class="interest-tag">Reinforcement Learning</span>
+                <span class="interest-tag">Bias and Fairness in AI</span>
+                <span class="interest-tag">Medical AI Systems</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <ul>
+                        <li>C / C++</li>
+                        <li>Java</li>
+                        <li>Python</li>
+                        <li>JavaScript</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>ML & Deep Learning</h3>
+                    <ul>
+                        <li>TensorFlow / PyTorch</li>
+                        <li>Scikit-learn</li>
+                        <li>CNNs, RNNs, Transformers</li>
+                        <li>BERT, GPT architectures</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Web Development</h3>
+                    <ul>
+                        <li>HTML5, CSS3</li>
+                        <li>Node.js, Next.js</li>
+                        <li>Flask</li>
+                        <li>RESTful APIs</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Data Science</h3>
+                    <ul>
+                        <li>Pandas, NumPy</li>
+                        <li>Matplotlib, Seaborn</li>
+                        <li>Jupyter Notebooks</li>
+                        <li>Statistical Modeling</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Developer Tools</h3>
+                    <ul>
+                        <li>Git / GitHub</li>
+                        <li>Docker</li>
+                        <li>CI/CD (GitHub Actions)</li>
+                        <li>Linux/Unix</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Databases</h3>
+                    <ul>
+                        <li>MySQL</li>
+                        <li>MongoDB</li>
+                        <li>Firebase</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2>Selected Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>FreeToWork</h3>
+                    <p>Full-stack service marketplace web platform connecting service seekers with skilled professionals through a bidding system with real-time notifications.</p>
+                    <div class="tech">
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>Next.js</span>
+                        <span>MongoDB</span>
+                        <span>RESTful APIs</span>
+                    </div>
+                    <a href="https://github.com/D-R0Y" target="_blank">View on GitHub →</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>Maven</h3>
+                    <p>Cross-platform mobile e-learning application featuring gamification with reward-based coin system and comprehensive instructor dashboard.</p>
+                    <div class="tech">
+                        <span>Flutter</span>
+                        <span>Firebase</span>
+                        <span>Firestore</span>
+                        <span>Cloud Storage</span>
+                    </div>
+                    <a href="https://github.com/D-R0Y" target="_blank">View on GitHub →</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>Diabetic Retinopathy Detection</h3>
+                    <p>Automated screening system using deep learning ensemble methods with comparative analysis of five CNN architectures and Flask web interface.</p>
+                    <div class="tech">
+                        <span>Python</span>
+                        <span>TensorFlow</span>
+                        <span>Keras</span>
+                        <span>Flask</span>
+                        <span>OpenCV</span>
+                    </div>
+                    <a href="https://github.com/D-R0Y" target="_blank">View on GitHub →</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>Discord 1v1 Challenge Bot</h3>
+                    <p>Interactive Discord bot for competitive programming duels on Codeforces with real-time problem retrieval, submission verification, and leaderboards.</p>
+                    <div class="tech">
+                        <span>Python</span>
+                        <span>Discord.py</span>
+                        <span>Codeforces API</span>
+                    </div>
+                    <a href="https://github.com/D-R0Y" target="_blank">View on GitHub →</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>Car Rental Management System</h3>
+                    <p>Comprehensive car rental system demonstrating OOP principles with vehicle tracking, rental processing, billing, and return management.</p>
+                    <div class="tech">
+                        <span>Java</span>
+                        <span>OOP</span>
+                        <span>Design Patterns</span>
+                    </div>
+                    <a href="https://github.com/D-R0Y" target="_blank">View on GitHub →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements">
+        <div class="container">
+            <h2>Achievements & Honors</h2>
+            <div class="achievements-list">
+                <div class="achievement">
+                    <h4>Dean's List Honoree</h4>
+                    <p>Maintained CGPA ≥ 3.75 throughout undergraduate studies at CUET</p>
+                </div>
+                <div class="achievement">
+                    <h4>UNLP Shared Task 2024</h4>
+                    <p>Secured 5th position in two competition tracks</p>
+                </div>
+                <div class="achievement">
+                    <h4>Competitive Programming</h4>
+                    <p>Solved 750+ algorithmic problems across Codeforces, LeetCode, and HackerRank</p>
+                </div>
+                <div class="achievement">
+                    <h4>Bangladesh Chemistry Olympiad 2018</h4>
+                    <p>18th position in Regional Round (Cumilla)</p>
+                </div>
+                <div class="achievement">
+                    <h4>Creative Talent Search Competition 2019</h4>
+                    <p>1st position in Regional Round (Cumilla) - Mathematics & ICT</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Aninda Roy Dhruba. All rights reserved.</p>
+        <p style="margin-top: 0.5rem;">Built with passion for technology and research</p>
+    </footer>
+</body>
+</html>
